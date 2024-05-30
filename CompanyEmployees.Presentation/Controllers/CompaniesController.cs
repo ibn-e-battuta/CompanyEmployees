@@ -3,6 +3,7 @@ using CompanyEmployees.Presentation.ActionFilters;
 using CompanyEmployees.Presentation.ModelBinders;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.AspNetCore.RateLimiting;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -19,6 +20,7 @@ public class CompaniesController : ControllerBase
     public CompaniesController(IServiceManager service) => _service = service;
 
     [HttpGet(Name = "GetCompanies")]
+    [EnableRateLimiting("SpecificPolicy")]
     public async Task<IActionResult> GetCompanies()
     {
         var companies = await _service.CompanyService.GetAllCompaniesAsync(trackChanges: false);
@@ -29,6 +31,7 @@ public class CompaniesController : ControllerBase
     [HttpGet("{id:guid}", Name = "CompanyById")]
     //[ResponseCache(Duration = 60)]
     [OutputCache(Duration = 60)]
+    [DisableRateLimiting]
     public async Task<IActionResult> GetCompany(Guid id)
     {
         var company = await _service.CompanyService.GetCompanyAsync(id, trackChanges: false);
