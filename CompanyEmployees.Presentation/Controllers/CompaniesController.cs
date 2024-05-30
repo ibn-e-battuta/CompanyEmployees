@@ -25,7 +25,6 @@ public class CompaniesController : ControllerBase
     public IActionResult GetCompany(Guid id)
     {
         var company = _service.CompanyService.GetCompany(id, trackChanges: false);
-
         return Ok(company);
     }
 
@@ -42,6 +41,9 @@ public class CompaniesController : ControllerBase
     {
         if (company is null)
             return BadRequest("CompanyForCreationDto object is null");
+
+        if (!ModelState.IsValid)
+            return UnprocessableEntity(ModelState);
 
         var createdCompany = _service.CompanyService.CreateCompany(company);
 
@@ -69,6 +71,9 @@ public class CompaniesController : ControllerBase
     {
         if (company is null)
             return BadRequest("CompanyForUpdateDto object is null");
+
+        if (!ModelState.IsValid)
+            return UnprocessableEntity(ModelState);
 
         _service.CompanyService.UpdateCompany(id, company, trackChanges: true);
 
