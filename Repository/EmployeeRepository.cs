@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 
 namespace Repository;
@@ -12,11 +13,11 @@ internal sealed class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRe
 	{
 	}
 
-    public async Task<PagedList<Employee>> GetEmployeesAsync(Guid companyId,
-		EmployeeParameters employeeParameters, bool trackChanges)
+    public async Task<PagedList<Employee>> GetEmployeesAsync(Guid companyId, EmployeeParameters employeeParameters, bool trackChanges)
     {
-        var employees = await FindByCondition(e => e.CompanyId.Equals(companyId) && (e.Age >= 
-			employeeParameters.MinAge && e.Age <= employeeParameters.MaxAge), trackChanges)
+        var employees = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+            .FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge)
+            .Search(employeeParameters.SearchTerm)
             .OrderBy(e => e.Name)
             .ToListAsync();
 
