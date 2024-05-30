@@ -1,7 +1,7 @@
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CompanyEmployees.Controllers;
+namespace StaffNet.Controllers;
 
 [ApiController]
 [Route("[controller]")]

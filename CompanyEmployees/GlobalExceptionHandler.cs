@@ -4,7 +4,7 @@ using Entities.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
 
-namespace CompanyEmployees
+namespace StaffNet
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {
@@ -15,7 +15,7 @@ namespace CompanyEmployees
             _logger = logger;
         }
 
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, 
+        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext,
             Exception exception, CancellationToken cancellationToken)
         {
             httpContext.Response.ContentType = "application/json";

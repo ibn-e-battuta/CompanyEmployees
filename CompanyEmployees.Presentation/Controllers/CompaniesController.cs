@@ -1,14 +1,14 @@
 ﻿using Asp.Versioning;
-using CompanyEmployees.Presentation.ActionFilters;
-using CompanyEmployees.Presentation.ModelBinders;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using StaffNet.Presentation.ActionFilters;
+using StaffNet.Presentation.ModelBinders;
 
-namespace CompanyEmployees.Presentation.Controllers;
+namespace StaffNet.Presentation.Controllers;
 
 [Route("api/companies")]
 [ApiController]

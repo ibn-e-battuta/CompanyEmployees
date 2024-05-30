@@ -1,4 +1,4 @@
-namespace CompanyEmployees
+namespace StaffNet
 {
     public class WeatherForecast
     {

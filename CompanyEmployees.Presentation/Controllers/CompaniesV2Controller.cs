@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 
-namespace CompanyEmployees.Presentation.Controllers;
+namespace StaffNet.Presentation.Controllers;
 
 [Route("api/companies")]
 [ApiController]

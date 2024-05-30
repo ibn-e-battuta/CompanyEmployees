@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace CompanyEmployees.Presentation.ModelBinders;
+namespace StaffNet.Presentation.ModelBinders;
 
 public class ArrayModelBinder : IModelBinder
 {

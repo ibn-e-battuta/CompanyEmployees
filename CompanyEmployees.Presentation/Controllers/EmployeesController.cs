@@ -1,13 +1,13 @@
-﻿using CompanyEmployees.Presentation.ActionFilters;
-using Entities.LinkModels;
+﻿using Entities.LinkModels;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
+using StaffNet.Presentation.ActionFilters;
 using System.Text.Json;
 
-namespace CompanyEmployees.Presentation.Controllers;
+namespace StaffNet.Presentation.Controllers;
 
 [Route("api/companies/{companyId}/employees")]
 [ApiController]

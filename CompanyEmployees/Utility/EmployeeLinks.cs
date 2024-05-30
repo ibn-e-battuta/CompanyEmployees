@@ -4,7 +4,7 @@ using Entities.Models;
 using Microsoft.Net.Http.Headers;
 using Shared.DataTransferObjects;
 
-namespace CompanyEmployees.Utility;
+namespace StaffNet.Utility;
 
 public class EmployeeLinks : IEmployeeLinks
 {

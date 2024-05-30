@@ -1,9 +1,9 @@
-﻿using CompanyEmployees.Presentation.ActionFilters;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using StaffNet.Presentation.ActionFilters;
 
-namespace CompanyEmployees.Presentation.Controllers;
+namespace StaffNet.Presentation.Controllers;
 
 [Route("api/authentication")]
 [ApiController]

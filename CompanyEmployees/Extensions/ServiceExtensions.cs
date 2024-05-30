@@ -7,7 +7,6 @@ using Repository;
 using Service;
 using Service.Contracts;
 using Asp.Versioning;
-using CompanyEmployees.Presentation.Controllers;
 using System.Threading.RateLimiting;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
@@ -16,8 +15,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Entities.ConfigurationModels;
 using Microsoft.OpenApi.Models;
+using StaffNet.Presentation.Controllers;
 
-namespace CompanyEmployees.Extensions;
+namespace StaffNet.Extensions;
 
 public static class ServiceExtensions
 {
@@ -97,7 +97,7 @@ public static class ServiceExtensions
          });
     }
 
-    public static void ConfigureOutputCaching(this IServiceCollection services) => 
+    public static void ConfigureOutputCaching(this IServiceCollection services) =>
         services.AddOutputCache(opt =>
         {
             //opt.AddBasePolicy(bp => bp.Expire(TimeSpan.FromSeconds(10)));
@@ -118,7 +118,7 @@ public static class ServiceExtensions
                     QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
                     Window = TimeSpan.FromMinutes(1)
                 }));
-           
+
             opt.AddPolicy("SpecificPolicy", context =>
                 RateLimitPartition.GetFixedWindowLimiter("SpecificLimiter",
                 partition => new FixedWindowRateLimiterOptions
@@ -192,9 +192,9 @@ public static class ServiceExtensions
     {
         services.AddSwaggerGen(s =>
         {
-            s.SwaggerDoc("v1", new OpenApiInfo 
-            { 
-                Title = "Code Maze API", 
+            s.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Code Maze API",
                 Version = "v1",
                 Description = "CompanyEmployees API by CodeMaze",
                 TermsOfService = new Uri("https://example.com/terms"),

@@ -1,24 +1,24 @@
-﻿using CompanyEmployees.Presentation.ActionFilters;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using StaffNet.Presentation.ActionFilters;
 
-namespace CompanyEmployees.Presentation.Controllers;
+namespace StaffNet.Presentation.Controllers;
 
 [Route("api/token")]
 [ApiController]
 public class TokenController : ControllerBase
 {
-	private readonly IServiceManager _service;
+    private readonly IServiceManager _service;
 
-	public TokenController(IServiceManager service) => _service = service;
+    public TokenController(IServiceManager service) => _service = service;
 
-	[HttpPost("refresh")]
-	[ServiceFilter(typeof(ValidationFilterAttribute))]
-	public async Task<IActionResult> Refresh([FromBody] TokenDto tokenDto)
-	{
-		var tokenDtoToReturn = await _service.AuthenticationService.RefreshToken(tokenDto);
+    [HttpPost("refresh")]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> Refresh([FromBody] TokenDto tokenDto)
+    {
+        var tokenDtoToReturn = await _service.AuthenticationService.RefreshToken(tokenDto);
 
-		return Ok(tokenDtoToReturn);
-	}
+        return Ok(tokenDtoToReturn);
+    }
 }

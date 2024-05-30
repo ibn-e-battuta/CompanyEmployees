@@ -1,7 +1,3 @@
-using CompanyEmployees;
-using CompanyEmployees.Extensions;
-using CompanyEmployees.Presentation.ActionFilters;
-using CompanyEmployees.Utility;
 using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +6,11 @@ using Microsoft.Extensions.Options;
 using NLog;
 using Service.DataShaping;
 using Shared.DataTransferObjects;
+using StaffNet;
+using StaffNet.Extensions;
+using StaffNet.Presentation;
+using StaffNet.Presentation.ActionFilters;
+using StaffNet.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +51,7 @@ builder.Services.AddControllers(config =>
     //config.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 });
 }).AddXmlDataContractSerializerFormatters()
   .AddCustomCSVFormatter()
-  .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
+  .AddApplicationPart(typeof(AssemblyReference).Assembly);
 
 builder.Services.AddCustomMediaTypes();
 
