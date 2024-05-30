@@ -1,21 +1,21 @@
-﻿using Contracts;
+﻿using Asp.Versioning;
+using Contracts;
+using Entities.ConfigurationModels;
+using Entities.Models;
 using LoggerService;
-using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Repository;
 using Service;
 using Service.Contracts;
-using Asp.Versioning;
-using System.Threading.RateLimiting;
-using Entities.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Entities.ConfigurationModels;
-using Microsoft.OpenApi.Models;
 using StaffNet.Presentation.Controllers;
+using System.Text;
+using System.Threading.RateLimiting;
 
 namespace StaffNet.Extensions;
 
